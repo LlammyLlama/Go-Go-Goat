@@ -1,0 +1,32 @@
+Arguments: 
+  /home/emilylam/.nvm/versions/node/v16.15.1/bin/node /home/emilylam/.nvm/versions/node/v16.15.1/bin/yarn add webpack webpack-cli
+
+PATH: 
+  /home/emilylam/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/bin:/home/emilylam/.rbenv/versions/3.1.2/bin:/home/emilylam/.rbenv/libexec:/home/emilylam/.rbenv/plugins/ruby-build/bin:./bin:./node_modules/.bin:/home/emilylam/.nvm/versions/node/v16.15.1/bin:/home/emilylam/.pyenv/bin:/home/emilylam/.rbenv/shims:/home/emilylam/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/ia32_win/mpirt:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/ia32_win/compiler:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/mpirt:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Users/emily/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/emily/AppData/Local/Programs/Microsoft VS Code/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/webpack: ETIMEDOUT
+      at Timeout._onTimeout (/home/emilylam/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:141550:19)
+      at listOnTimeout (node:internal/timers:559:17)
+      at processTimers (node:internal/timers:502:7)
+
+npm manifest: 
+  {
+    "name": "app",
+    "private": "true"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
