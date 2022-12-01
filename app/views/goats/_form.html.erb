@@ -1,0 +1,12 @@
+<div class="container align-self-center">
+  <%= simple_form_for(@goat) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :services %>
+    <%= f.input :rate_per_day %>
+    <%= f.input :appetite %>
+    <%= f.input :description %>
+    <%= f.input :image %>
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>
