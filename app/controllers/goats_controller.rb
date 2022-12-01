@@ -1,4 +1,6 @@
 class GoatsController < ApplicationController
+  before_action :set_user, only: [:new, :create]
+
   def index
   end
 
@@ -17,7 +19,11 @@ class GoatsController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def goat_params
-    params.require(:goat).permit(:name, :age, :services, :rate_per_day, :appetite, :description, :image)
+    params.require(:goat).permit(:name, :age, :services, :rate_per_day, :appetite, :description, :image, :user_id)
   end
 end
