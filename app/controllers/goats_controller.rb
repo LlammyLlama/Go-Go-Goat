@@ -1,5 +1,4 @@
 class GoatsController < ApplicationController
-  before_action :set_user, only: [:new, :create]
 
   def index
   end
@@ -10,8 +9,9 @@ class GoatsController < ApplicationController
 
   def create
     @goat = Goat.new(goat_params)
+    @goat.user = current_user
     if @goat.save
-      redirect_to goat_path(@goat)
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -19,11 +19,7 @@ class GoatsController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def goat_params
-    params.require(:goat).permit(:name, :age, :services, :rate_per_day, :appetite, :description, :image, :user_id)
+    params.require(:goat).permit(:name, :age, :services, :rate_per_day, :appetite, :description, :image)
   end
 end
