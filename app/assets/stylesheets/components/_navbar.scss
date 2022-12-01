@@ -10,3 +10,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 200px;
 }
+
+.nav-item.dropdown {
+  &:hover {
+  cursor: pointer;
+  }
+}
