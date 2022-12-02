@@ -9,18 +9,18 @@
 
 <div class="container">
   <h4>Browse au naturale lawn-mowing cuddle buddies below:</h4>
-  <%# list and interate through goats index here %>
+    <% @goats.each do |goat| %>
+      <%= link_to goat_path(goat) do %>
+        <div class="card-product">
+          <img src= <%= goat.image %>/>
+          <div class="card-product-infos">
+            <h2> <%= goat.name %> </h2>
+            <p><strong>Age:</strong> <%= goat.age %></p>
+            <p><strong>Services:</strong> <%= goat.services %></p>
+            <p><strong>Appetite(kgs):</strong> <%= goat.appetite %></p>
+            <p><strong>description:</strong> <%= goat.description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 </div>
-
-
-  <%# <div class="card-goat">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-trip-infos">
-      <div>
-        <h2>Title here</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-trip-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    </div>
-  </div> %>
