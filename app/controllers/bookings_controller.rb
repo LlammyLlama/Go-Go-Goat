@@ -5,11 +5,14 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @goat = Goat.find(params[:goat_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.goat = Goat.find(params[:goat_id])
+    @booking.status = "pending"
     if @booking.save
       redirect_to root_path # need to change this to the dashboard path
     else
@@ -19,11 +22,7 @@ class BookingsController < ApplicationController
 
   private
 
-  def set_booking
-    @booking = Booking.find(params[:id])
-  end
-
   def booking_params
-    params.require(:booking).permit(:status, :rental_start_date, :rental_end_date, :service)
+    params.require(:booking).permit(:rental_start_date, :rental_end_date)
   end
 end
