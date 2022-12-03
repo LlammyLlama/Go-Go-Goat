@@ -2,13 +2,14 @@ class GoatsController < ApplicationController
   def index
   end
 
+  def show
+    @goat = Goat.find(params[:id])
+  end
+
   def new
     @goat = Goat.new
   end
 
-  def show
-    @goat = Goat.find(params[:id])
-  end
 
   def create
     @goat = Goat.new(goat_params)
