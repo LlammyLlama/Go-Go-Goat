@@ -3,5 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @goats = Goat.all
+    @user = current_user
   end
+
 end
