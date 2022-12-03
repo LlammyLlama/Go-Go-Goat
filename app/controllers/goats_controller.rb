@@ -3,13 +3,14 @@ class GoatsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @goat = Goat.find(params[:id])
   end
 
   def new
+    @user = current_user
     @goat = Goat.new
   end
-
 
   def create
     @goat = Goat.new(goat_params)
