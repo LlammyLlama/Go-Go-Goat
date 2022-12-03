@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "/users/:id/dashboard", to: "users#show", as: :dashboard
   # resources :users, only: [:show]
-  resources :goats
+  resources :goats do
+    resources :bookings, only: %i[new create]
+  end
 end
