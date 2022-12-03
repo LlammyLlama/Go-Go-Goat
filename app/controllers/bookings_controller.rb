@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @booking = Booking.new
     @goat = Goat.find(params[:goat_id])
 >>>>>>> c4c8813ed7e97a01675d704e7b4c78043895df34
@@ -29,7 +30,7 @@ class BookingsController < ApplicationController
     @booking.goat = Goat.find(params[:goat_id])
     @booking.status = "pending"
     if @booking.save
-      redirect_to root_path # need to change this to the dashboard path
+      redirect_to dashboard_path(@booking.user)
     else
       render :new, status: :unprocessable_entity
 >>>>>>> c4c8813ed7e97a01675d704e7b4c78043895df34

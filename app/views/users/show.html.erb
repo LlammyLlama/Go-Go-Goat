@@ -1,3 +1,14 @@
 <div class="container">
 <h1>Hi <%= @user.email%> here are all your bookings</h1>
 </div>
+
+<% @bookings.each do |booking| %>
+  <div class="card-product">
+    <div class="card-product-infos">
+      <img src= <%= booking.goat.image %>/>
+      <h2><%= booking.goat.name %></h2>
+      <h2>Status: <%= booking.status %> </h2>
+      <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p><p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+    </div>
+  </div>
+<% end %>
