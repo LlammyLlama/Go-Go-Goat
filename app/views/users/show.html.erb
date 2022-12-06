@@ -1,6 +1,5 @@
 <div class="container">
 <h1>Hi <%= @user.email%> here are all your bookings</h1>
-<%= @bookings %>
 </div>
 
 <% @bookings.each do |booking| %>
@@ -13,3 +12,17 @@
     </div>
   </div>
 <% end %>
+
+<h1>Your goats for rent</h1>
+  <% @goats.each do |goat| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <img class="goat-show-image" src= <%= goat.image %>/>
+        <h2> <%= goat.name %> </h2>
+        <p><strong>Age:</strong> <%= goat.age %></p>
+        <p><strong>Services:</strong> <%= goat.services %></p>
+        <p><strong>Appetite(kgs):</strong> <%= goat.appetite %></p>
+        <p><strong>description:</strong> <%= goat.description %></p>
+      </div>
+    </div>
+  <% end %>
