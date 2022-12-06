@@ -4,5 +4,4 @@ class UsersController < ApplicationController
     @bookings = @user.bookings
     @goats = @user.goats
   end
-
 end
