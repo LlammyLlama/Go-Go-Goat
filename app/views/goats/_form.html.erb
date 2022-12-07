@@ -2,11 +2,11 @@
   <%= simple_form_for(@goat) do |f| %>
     <%= f.input :name %>
     <%= f.input :age %>
-    <%= f.input :services %>
-    <%= f.input :rate_per_day %>
-    <%= f.input :appetite %>
-    <%= f.input :description %>
-    <%= f.input :image %>
+    <%= f.input :services, placeholder: "e.g. lawn-mower, trash-gobbler, cuddle-buddy" %>
+    <%= f.input :rate_per_day, placeholder: "e.g. $5, $10" %>
+    <%= f.input :appetite, placeholder: 'e.g. 5L, 10L' %>
+    <%= f.input :description, placeholder: 'e.g. grumpy, sassy, etc.' %>
+    <%= f.input :image, placeholder: "The image-hosting url to your goat's photo" %>
     <%= f.submit class: 'btn btn-success' %>
   <% end %>
 </div>
