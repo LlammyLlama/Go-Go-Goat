@@ -4,7 +4,7 @@ class GoatsController < ApplicationController
 
   def show
     @user = current_user
-    @goat = @user.goats.find(params[:id])
+    @goat = Goat.find(params[:id])
     @review = Review.new
   end
 
@@ -21,6 +21,12 @@ class GoatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @goat = Goat.find(params[:id])
+    @goat.destroy
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
