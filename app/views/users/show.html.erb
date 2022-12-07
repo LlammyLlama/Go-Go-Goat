@@ -10,5 +10,10 @@
       <h2>Status: <%= booking.status %> </h2>
       <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p><p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
     </div>
+    <div>
+      <%= link_to 'Delete Booking', booking_path(booking),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= link_to 'Edit Booking', edit_goat_booking_path(booking) %>
+    </div>
   </div>
 <% end %>
