@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :goat
+  belongs_to :booking
   belongs_to :user
 
   validates :comment, :rating, presence: true

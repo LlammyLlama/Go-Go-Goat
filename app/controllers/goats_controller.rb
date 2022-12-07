@@ -4,7 +4,7 @@ class GoatsController < ApplicationController
 
   def show
     @user = current_user
-    @goat = @user.goats.find(params[:id])
+    @goat = Goat.find(params[:id])
     @review = Review.new
   end
 
