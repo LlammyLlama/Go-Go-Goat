@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: %i[edit update destroy]
+
   def index
     @user = current_user
     @bookings = Booking.all
@@ -22,7 +24,25 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @goat = Goat.find(params[:goat_id])
+  end
+
+  def update
+    @booking.update(booking_params)
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to dashboard_path, status: :see_other
+  end
+
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:rental_start_date, :rental_end_date)
