@@ -7,3 +7,26 @@
   <p><strong>description:</strong> <%= @goat.description %></p>
   <%= link_to 'Book dis goat!', new_goat_booking_path(@goat) %>
 </div>
+<div class="container">
+  <div class="reviews">
+    <% if @goat.reviews.count == 0 %>
+      <p>Be the first to leave a review on this goat</p>
+    <% else %>
+      <% @goat.reviews.each do |review| %>
+      <div>
+        <p>User: <%= review.comment %></p>
+        <p>Rating: <%= review.rating %></p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="add-review">
+    <%= simple_form_for [@goat, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, as: :select, collection: (1..5) %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
