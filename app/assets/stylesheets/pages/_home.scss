@@ -7,6 +7,10 @@ body.home {
 
 .container {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -28,18 +32,30 @@ body.home {
 .card-product {
   overflow: hidden;
   height: 200px;
+  width: 55%;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  justify-content:space-around;
   align-items: center;
-  margin: 5% 20%;
+  margin: 35px 20%;
+  padding: 15px;
   border-radius: 5px;
 }
 
+.card-product a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
 .card-product img {
+  display: flex;
   height: 100%;
   width: 200px;
   object-fit: cover;
+  border: 5px solid #555;
 }
 
 .card-product h2 {
@@ -57,7 +73,11 @@ body.home {
 }
 
 .card-product .card-product-infos {
+  margin-left: 8vw;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 a {
