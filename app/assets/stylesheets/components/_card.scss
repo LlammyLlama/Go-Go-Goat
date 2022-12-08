@@ -11,10 +11,12 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 100%;
   height: fit-content;
+
 }
 
 .card-product img {
   width: 100%;
+  object-fit: cover;
 }
 
 // .card-product > h2 {
