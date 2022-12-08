@@ -1,0 +1,36 @@
+body.new {
+  background-image: url("https://modernfarmer.com/wp-content/uploads/2019/06/shutterstock_1281840250.jpg");
+  background-repeat: no-repeat;
+  background-position: top 90% right 90%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.form, .new_goat {
+  color: white;
+  text-shadow: 2px 2px 4px $text-brown;
+  margin: 50px 50px 0px 50px;
+  padding: 0%;
+  width: 50%;
+  flex: 1;
+}
+
+.btn {
+  color: white;
+  background-color: $logo-green;
+  border: 1px $logo-green;
+}
+
+.text {
+  color: white;
+  text-shadow: 1px 1px 2px $text-brown;
+  margin: 50px 50px 0px 50px;
+  padding: 0%;
+  flex: 1;
+}
+
+.container-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

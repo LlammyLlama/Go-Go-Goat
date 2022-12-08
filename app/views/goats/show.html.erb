@@ -7,3 +7,17 @@
   <p><strong>description:</strong> <%= @goat.description %></p>
   <%= link_to 'Book dis goat!', new_goat_booking_path(@goat) %>
 </div>
+<div class="container">
+  <div class="reviews">
+    <% if @goat.reviews.count == 0 %>
+      <p>Be the first to leave a review on this goat</p>
+    <% else %>
+      <% @goat.reviews.each do |review| %>
+      <div>
+        <p>Comment: <%= review.comment %></p>
+        <p>Rating: <%= review.rating %></p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
