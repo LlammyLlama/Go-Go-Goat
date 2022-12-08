@@ -1,29 +1,29 @@
 <div class="container">
   <h3>Hi <%= @user.email%>, here are all your bookings</h3>
-    <% if @user.bookings.empty? %>
-      <p>You have no goat bookings!</p>
-      <%= link_to 'Browse Goats to Book Here', root_path %>
-    <% else %>
+  <% if @user.bookings.empty? %>
+    <p>You have no goat bookings!</p>
+    <%= link_to 'Browse Goats to Book Here', root_path %>
+  <% else %>
+    <div class="cards">
       <% @bookings.each do |booking| %>
         <div class="card-product">
-          <div class="card-product-infos">
-            <img src= <%= booking.goat.image %>/>
-            <h2><%= booking.goat.name %></h2>
-
-            <h2>Status: <%= booking.status %></h2>
-
-            <p><strong>Rental Date:</strong> <%= booking.rental_start_date %></p>
-            <p><strong></strong> <%= booking.rental_end_date %></p>
-            <div>
-              <%= link_to 'Delete Booking', booking_path(booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-              <%= link_to 'Edit Booking', edit_goat_booking_path(booking) %>
-              <%= link_to 'Leave a Review', new_booking_review_path(booking) %>
+          <%= link_to goat_path(booking.goat) do %>
+            <%= cl_image_tag booking.goat.image, height: 400, width: 600, crop: :fill %>
+            <div class="card-product-infos">
+              <h2><strong><%= booking.goat.name %></strong></h2>
+              <h4>Status: <%= booking.status %></h4>
+              <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p>
+              <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+              <p><%= link_to 'Delete Booking', booking_path(booking),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+              <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking) %></p>
+              <p><%= link_to 'Leave a Review', new_booking_review_path(booking) %></p>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="container">
@@ -32,21 +32,23 @@
     <p>You haven't rented any goats!</p>
     <%= link_to 'Create a Goat Listing Here', new_goat_booking_path %>
   <% else %>
-    <% @goats.each do |goat| %>
-      <div class="card-product">
-        <div class="card-product-infos">
-          <%# <img class="goat-show-image" src= <%= goat.image %>
-            <%# don't know where to put  :class => "goat-show-image" so just leave it here %>
-            <%= goat.photo.attached? ? cl_image_tag(goat.photo.key) : image_tag(goat.image) %>
-          <h2> <%= goat.name %> </h2>
-          <p><strong>Age:</strong> <%= goat.age %></p>
-          <p><strong>Services:</strong> <%= goat.services %></p>
-          <p><strong>Appetite(kgs):</strong> <%= goat.appetite %></p>
-          <p><strong>description:</strong> <%= goat.description %></p>
+    <div class="cards">
+      <% @goats.each do |goat| %>
+        <div class="card-product">
+          <%= link_to goat_path(goat) do %>
+            <%= cl_image_tag goat.image, height: 400, width: 600, crop: :fill %>
+            <div class="card-product-infos">
+              <h2> <%= goat.name %> </h2>
+              <p><strong>Age:</strong> <%= goat.age %></p>
+              <p><strong>Services:</strong> <%= goat.services %></p>
+              <p><strong>Appetite(kgs):</strong> <%= goat.appetite %></p>
+              <p><strong>description:</strong> <%= goat.description %></p>
+              <p><%= link_to 'Delete Goat', goat_path(goat),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+            </div>
+          <% end %>
         </div>
-        <%= link_to 'Delete Goat', goat_path(goat),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
