@@ -20,13 +20,4 @@
       <% end %>
     <% end %>
   </div>
-
-
-  <div class="add-review">
-    <%= simple_form_for [@goat, @review] do |f| %>
-      <%= f.input :comment %>
-      <%= f.input :rating, as: :select, collection: (1..5) %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
 </div>

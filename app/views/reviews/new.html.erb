@@ -1,0 +1,7 @@
+  <div class="add-review">
+    <%= simple_form_for [@goat, @review], url: booking_reviews_path(@booking) do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, as: :select, collection: (1..5) %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>

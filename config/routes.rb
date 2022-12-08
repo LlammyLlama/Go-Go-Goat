@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   resources :goats do
     resources :bookings, only: %i[new create edit update]
-    resources :reviews, only: %i[create]
   end
-
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:destroy] do
+    resources :reviews, only: %i[new create]
+  end
 end
