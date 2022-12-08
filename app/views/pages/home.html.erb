@@ -13,7 +13,8 @@
     <% @goats.each do |goat| %>
       <div class="card-product">
         <%= link_to goat_path(goat) do %>
-          <img src= <%= goat.image %>/>
+          <%= goat.photo.attached? ? cl_image_tag(goat.photo.key) : image_tag(goat.image) %>
+          <%# <%=  cl_image_path goat.photo.key %>
           <div class="card-product-infos">
             <h2> <%= goat.name %> </h2>
             <p><strong>Age:</strong> <%= goat.age %></p>
