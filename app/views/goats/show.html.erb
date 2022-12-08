@@ -1,5 +1,7 @@
 <div class="card-goat-infos">
-  <img class="goat-show-image" src= <%= @goat.image %>/>
+  <%# <img class="goat-show-image" src= <%= @goat.image %>
+  <%# don't know where to put  :class => "goat-show-image" so just leave it here %>
+  <%= @goat.photo.attached? ? cl_image_tag(@goat.photo.key) : image_tag(@goat.image) %>
   <h2> <%= @goat.name %> </h2>
   <p><strong>Age:</strong> <%= @goat.age %></p>
   <p><strong>Services:</strong> <%= @goat.services %></p>

@@ -12,8 +12,8 @@
 
             <h2>Status: <%= booking.status %></h2>
 
-            <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p>
-            <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+            <p><strong>Rental Date:</strong> <%= booking.rental_start_date %></p>
+            <p><strong></strong> <%= booking.rental_end_date %></p>
             <div>
               <%= link_to 'Delete Booking', booking_path(booking),
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
@@ -35,7 +35,9 @@
     <% @goats.each do |goat| %>
       <div class="card-product">
         <div class="card-product-infos">
-          <img class="goat-show-image" src= <%= goat.image %>/>
+          <%# <img class="goat-show-image" src= <%= goat.image %>
+            <%# don't know where to put  :class => "goat-show-image" so just leave it here %>
+            <%= goat.photo.attached? ? cl_image_tag(goat.photo.key) : image_tag(goat.image) %>
           <h2> <%= goat.name %> </h2>
           <p><strong>Age:</strong> <%= goat.age %></p>
           <p><strong>Services:</strong> <%= goat.services %></p>
