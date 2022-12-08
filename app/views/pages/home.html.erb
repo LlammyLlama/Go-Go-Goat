@@ -2,17 +2,17 @@
   <div class="container">
     <h1 class="slogan-font"><em>Go for the G.O.A.T.</em></h1>
     <div class="marketing-slogan">
-    <h4>Have better things to do with your time than pushing around a lawn mower?</h4>
-    <h4>Want the Greatest (animal) Of All Time to hang out with?</h4>
-    <h4>Look no further!</h4>
+      <h4>Have better things to do with your time than pushing around a lawn mower?</h4>
+      <h4>Want the Greatest (animal) Of All Time to hang out with?</h4>
+      <h4>Look no further!</h4>
     </div>
   </div>
-  
+
 <div class="container">
   <h4>Browse au naturale lawn-mowing cuddle buddies below:</h4>
     <% @goats.each do |goat| %>
-        <div class="card-product">
-      <%= link_to goat_path(goat) do %>
+      <div class="card-product">
+        <%= link_to goat_path(goat) do %>
           <img src= <%= goat.image %>/>
           <div class="card-product-infos">
             <h2> <%= goat.name %> </h2>
@@ -22,6 +22,7 @@
             <p><strong>description:</strong> <%= goat.description %></p>
           </div>
         <% end %>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </body>
