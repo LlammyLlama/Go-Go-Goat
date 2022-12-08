@@ -10,8 +10,8 @@
 <div class="container">
   <h4>Browse au naturale lawn-mowing cuddle buddies below:</h4>
     <% @goats.each do |goat| %>
-      <%= link_to goat_path(goat) do %>
         <div class="card-product">
+      <%= link_to goat_path(goat) do %>
           <img src= <%= goat.image %>/>
           <div class="card-product-infos">
             <h2> <%= goat.name %> </h2>
