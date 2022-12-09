@@ -1,5 +1,5 @@
-<%= simple_form_for [goat, booking], data: { controller: 'flatpickr' }  do |f| %>
-  <%= f.input :rental_start_date, as: :string, input_html: { data: {
-     flatpickr_target: "rentalStartDate" } }  %>
+<%= simple_form_for [goat, booking], data: {controller: 'flatpickr'} do |f| %>
+  <%= f.input :rental_start_date, input_html: {data: {flatpickr_target: "rentalStartDate"}} %>
+  <%# <%= f.input :rental_end_date, input_html: { data: {flatpickr_target: "rentalEndDate"}} %>
   <%= f.submit class: 'btn btn-success' %>
 <% end %>

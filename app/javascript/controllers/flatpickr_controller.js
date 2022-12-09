@@ -7,9 +7,17 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 export default class extends Controller {
   static targets = [ "rentalStartDate", "rentalEndDate" ]
   connect() {
-    flatpickr(this.rentalStartDateTarget, {
-              // Provide an id for the plugin to work
-              plugins: [new rangePlugin({ input: "#end_time"})]})
+    console.log('Flatpickr')
+    const startFlatpickrInstance = flatpickr(this.rentalStartDateTarget, {
+                                      // Provide an id for the plugin to work
+                                      // "plugins": [new rangePlugin({ input: "#booking_rental_end_date"})]
+                                      closeOnSelect: false,
+                                      altInput: true,
+                                      altFormat: "F j, Y",
+                                      dateFormat: "m-d-Y",
+                                      inline: true
+                                    })
+    // startFlatpickrInstance.open() // opens datepickr
     flatpickr(this.rentalEndDateTarget, {})
   }
 }
