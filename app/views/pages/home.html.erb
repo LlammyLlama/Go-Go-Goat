@@ -8,18 +8,15 @@
     </div>
   </div>
 
-<div class="container">
-  <h4>Browse au naturale lawn-mowing cuddle buddies below:</h4>
+<h4>Browse au naturale lawn-mowing cuddle buddies below:</h4>
+  <div class="cards">
     <% @goats.each do |goat| %>
       <div class="card-product">
         <%= link_to goat_path(goat) do %>
-          <img src= <%= goat.image %>/>
+          <%= goat.photo.attached? ? cl_image_tag(goat.photo.key, height: 400, width: 600, crop: :fill) : image_tag(goat.image, height: 400, width: 600, crop: :fill) %>
           <div class="card-product-infos">
             <h2> <%= goat.name %> </h2>
-            <p><strong>Age:</strong> <%= goat.age %></p>
-            <p><strong>Services:</strong> <%= goat.services %></p>
-            <p><strong>Appetite(kgs):</strong> <%= goat.appetite %></p>
-            <p><strong>description:</strong> <%= goat.description %></p>
+            <p><strong>Rate per day ($):</strong> <%= goat.rate_per_day %></p>
           </div>
         <% end %>
       </div>
