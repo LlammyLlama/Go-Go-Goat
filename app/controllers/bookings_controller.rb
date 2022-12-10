@@ -28,10 +28,12 @@ class BookingsController < ApplicationController
 
   def approve
     @booking.update(status: "Approved")
+    redirect_to dashboard_path
   end
 
   def deny
     @booking.update(status: "Denied")
+    redirect_to dashboard_path
   end
 
   def edit
