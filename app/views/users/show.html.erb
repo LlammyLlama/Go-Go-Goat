@@ -1,5 +1,5 @@
-<div class="container">
 <% if @bookings.empty? == false %>
+  <div class="container">
   <h1>You have incomings booking</h1>
 <% end %>
 
@@ -92,7 +92,7 @@
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
             </div>
         </div>
-      <% end %>
+          <% end %>
     </div>
   <% end %>
 </div>
