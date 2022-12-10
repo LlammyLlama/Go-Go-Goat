@@ -11,11 +11,13 @@ export default class extends Controller {
     const startFlatpickrInstance = flatpickr(this.rentalStartDateTarget, {
                                       // Provide an id for the plugin to work
                                       // "plugins": [new rangePlugin({ input: "#booking_rental_end_date"})]
+                                      mode: "range",
                                       closeOnSelect: false,
                                       altInput: true,
                                       altFormat: "F j, Y",
                                       dateFormat: "m-d-Y",
-                                      inline: true
+                                      inline: true,
+                                      mode: "range"
                                     })
     // startFlatpickrInstance.open() // opens datepickr
     flatpickr(this.rentalEndDateTarget, {})
