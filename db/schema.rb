@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_085219) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_015220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_085219) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "status"
-    t.date "rental_start_date"
-    t.date "rental_end_date"
+    t.string "rental_start_date"
+    t.string "rental_end_date"
     t.string "service"
     t.bigint "goat_id", null: false
     t.bigint "user_id", null: false
@@ -72,11 +72,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_085219) do
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
     t.bigint "user_id"
-    t.bigint "booking_id"
+    t.bigint "goat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rating"
+    t.bigint "booking_id", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["goat_id"], name: "index_reviews_on_goat_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -98,5 +100,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_085219) do
   add_foreign_key "bookings", "users"
   add_foreign_key "goats", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "goats"
   add_foreign_key "reviews", "users"
 end
