@@ -30,8 +30,9 @@ a {
   color: $logo-brown;
 }
 
-.goat-show-image {
+#goat-show-image {
   border-radius: 5px;
+  object-fit: cover;
 }
 
 @media(max-width: 992px) {
