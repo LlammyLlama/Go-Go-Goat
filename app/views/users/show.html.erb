@@ -12,8 +12,8 @@
             <div class="card-product-infos">
               <h2><strong><%= booking.goat.name %></strong></h2>
               <h4>Status: <%= booking.status %></h4>
-              <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p>
-              <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+              <p><strong>Rental Dates:</strong> <%= booking.rental_start_date %></p>
+              <%# <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
               <p><%= link_to 'Delete Booking', booking_path(booking),
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
               <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking) %></p>

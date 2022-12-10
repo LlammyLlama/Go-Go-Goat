@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
 
   def edit
     @goat = Goat.find(params[:goat_id])
+    @booking.user = current_user
   end
 
   def update
