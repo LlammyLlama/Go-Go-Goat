@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[edit update destroy]
+  before_action :set_booking, only: %i[edit update destroy approve deny]
 
   def index
     @user = current_user
@@ -18,12 +18,20 @@ class BookingsController < ApplicationController
     @booking.rental_end_date = params[:booking][:rental_start_date].split(" to ")[1]
     @booking.user = current_user
     @booking.goat = Goat.find(params[:goat_id])
-    @booking.status = "pending"
+    @booking.status = "Pending"
     if @booking.save
       redirect_to dashboard_path(@booking.user)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def approve
+    @booking.update(status: "Approved")
+  end
+
+  def deny
+    @booking.update(status: "Denied")
   end
 
   def edit

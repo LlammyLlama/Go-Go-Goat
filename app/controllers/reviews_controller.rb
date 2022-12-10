@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user = current_user
-    @review.booking = @review.user.bookings.last
+    @review.booking = Booking.find(params[:booking_id])
     @goat = @review.booking.goat
+    @review.goat_id = @goat.id
     if @review.save
       redirect_to goat_path(@goat)
     else
-      render 'goats/show', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
   end
 
