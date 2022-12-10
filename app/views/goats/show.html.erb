@@ -8,7 +8,12 @@
   <p><strong>Services:</strong> <%= @goat.services %></p>
   <p><strong>Appetite(kgs):</strong> <%= @goat.appetite %></p>
   <p><strong>description:</strong> <%= @goat.description %></p>
-  <%= link_to 'Book dis goat!', new_goat_booking_path(@goat) %>
+
+  <% if current_user.goats.include?(@goat) %>
+    <h2>You already own this goat!</h2>
+  <% else %>
+    <%= link_to 'Book dis goat!', new_goat_booking_path(@goat) %>
+  <% end %>
 </div>
 <div class="container">
   <div class="reviews">

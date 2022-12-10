@@ -1,4 +1,41 @@
 <div class="container">
+<% if @bookings.empty? == true %>
+  <h1>You have incomings booking</h1>
+<% end %>
+
+<% if current_user.goats.each do |goat| %>
+      <% if goat.booking_ids.count >= 1 %>
+        <% goat.booking_ids.each do |booking_id| %>
+        <% booking = Booking.find(booking_id) %>
+          <div class="cards">
+            <div class="card-product">
+              <%= link_to goat_path(goat) %>
+                <%= goat.photo.attached? ? cl_image_tag(goat.photo.key, height: 400, width: 600, crop: :fill) : image_tag(goat.image, height: 400, width: 600, crop: :fill) %>
+                <div class="card-product-infos">
+                  <h2><strong><%= goat.name %></strong></h2>
+                  <h4>Status: <%= booking.status %></h4>
+                  <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p>
+                  <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+
+                  <p><%= link_to 'Confirm', approvebooking_path(booking),
+                          data: {turbo_method: :post} %></p>
+                  <p><%= link_to 'Deny', denybooking_path(booking),
+                          data: {turbo_method: :post} %></p>
+
+                  <p><%= link_to 'Delete Booking', booking_path(booking),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+                  <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking) %></p>
+                  <p><%= link_to 'Leave a Review', new_booking_review_path(booking) %></p>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>
+
+
+<div class="container">
   <h3>Hi <%= @user.email%>, here are all your bookings</h3>
   <% if @user.bookings.empty? %>
     <p>You have no goat bookings!</p>
@@ -7,19 +44,27 @@
     <div class="cards">
       <% @bookings.each do |booking| %>
         <div class="card-product">
-          <%= link_to goat_path(booking.goat) do %>
+          <% link_to goat_path(booking.goat.name) %>
             <%= booking.goat.photo.attached? ? cl_image_tag(booking.goat.photo.key, height: 400, width: 600, crop: :fill) : image_tag(booking.goat.image, height: 400, width: 600, crop: :fill) %>
             <div class="card-product-infos">
               <h2><strong><%= booking.goat.name %></strong></h2>
               <h4>Status: <%= booking.status %></h4>
               <p><strong>Rental Start Date:</strong> <%= booking.rental_start_date %></p>
               <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
+
+              <% if @goats.include?(booking.goat)  %>
+                <p><%= link_to 'Confirm', approvebooking_path(booking),
+                      data: {turbo_method: :post} %></p>
+                <p><%= link_to 'Deny', denybooking_path(booking),
+                      data: {turbo_method: :post} %></p>
+              <% end %>
+
+
               <p><%= link_to 'Delete Booking', booking_path(booking),
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
               <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking) %></p>
               <p><%= link_to 'Leave a Review', new_booking_review_path(booking) %></p>
             </div>
-          <% end %>
         </div>
       <% end %>
     </div>
@@ -35,7 +80,7 @@
     <div class="cards">
       <% @goats.each do |goat| %>
         <div class="card-product">
-          <%= link_to goat_path(goat) do %>
+          <% link_to goat_path(goat) %>
             <%= goat.photo.attached? ? cl_image_tag(goat.photo.key, height: 400, width: 600, crop: :fill) : image_tag(goat.image, height: 400, width: 600, crop: :fill) %>
             <div class="card-product-infos">
               <h2> <%= goat.name %> </h2>
