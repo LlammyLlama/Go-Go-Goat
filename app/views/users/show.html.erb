@@ -9,7 +9,7 @@
         <% booking = Booking.find(booking_id) %>
           <div class="cards">
             <div class="card-product">
-              <%= link_to goat_path(goat) %>
+              <% link_to goat_path(goat) %>
                 <%= goat.photo.attached? ? cl_image_tag(goat.photo.key, height: 400, width: 600, crop: :fill) : image_tag(goat.image, height: 400, width: 600, crop: :fill) %>
                 <div class="card-product-infos">
                   <h2><strong><%= goat.name %></strong></h2>
