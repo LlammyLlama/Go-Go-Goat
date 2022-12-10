@@ -1,9 +1,9 @@
-<div class="container">
-<% if @bookings.empty? == true %>
+<% if @bookings.empty? == false %>
+  <div class="container">
   <h1>You have incomings booking</h1>
 <% end %>
 
-<% if current_user.goats.each do |goat| %>
+<% current_user.goats.each do |goat| %>
       <% if goat.booking_ids.count >= 1 %>
         <% goat.booking_ids.each do |booking_id| %>
         <% booking = Booking.find(booking_id) %>
@@ -91,9 +91,8 @@
               <p><%= link_to 'Delete Goat', goat_path(goat),
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
             </div>
-          <% end %>
         </div>
-      <% end %>
+          <% end %>
     </div>
   <% end %>
 </div>
