@@ -1,6 +1,7 @@
-<% if @bookings.empty? == false %>
-  <div class="container">
-  <h1>You have incomings booking</h1>
+
+<div class="container">
+<% if @bookings.empty? == true %>
+  <h1>Your Bookings</h1>
 <% end %>
 
 <% current_user.goats.each do |goat| %>
@@ -36,7 +37,6 @@
 
 
 <div class="container">
-  <h3>Hi <%= @user.email%>, here are all your bookings</h3>
   <% if @user.bookings.empty? %>
     <p>You have no goat bookings!</p>
     <%= link_to 'Browse Goats to Book Here', root_path %>
