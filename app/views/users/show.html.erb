@@ -16,7 +16,7 @@
               <p><strong>Rental End Date:</strong> <%= booking.rental_end_date %></p>
               <p><%= link_to 'Delete Booking', booking_path(booking),
               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-              <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking) %></p>
+              <p><%= link_to 'Edit Booking', edit_goat_booking_path(booking.goat,booking) %></p>
               <p><%= link_to 'Leave a Review', new_booking_review_path(booking) %></p>
             </div>
           <% end %>

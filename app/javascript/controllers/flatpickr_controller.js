@@ -15,7 +15,8 @@ export default class extends Controller {
                                       altInput: true,
                                       altFormat: "F j, Y",
                                       dateFormat: "m-d-Y",
-                                      inline: true
+                                      inline: true,
+                                      mode: "range"
                                     })
     // startFlatpickrInstance.open() // opens datepickr
     flatpickr(this.rentalEndDateTarget, {})

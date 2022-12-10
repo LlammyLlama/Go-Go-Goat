@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.rental_start_date = params[:booking][:rental_start_date].split(" to ")[0]
+    @booking.rental_end_date = params[:booking][:rental_start_date].split(" to ")[1]
     @booking.user = current_user
     @booking.goat = Goat.find(params[:goat_id])
     @booking.status = "pending"
@@ -29,6 +31,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking.rental_start_date = params[:booking][:rental_start_date].split(" to ")[0]
+    @booking.rental_end_date = params[:booking][:rental_start_date].split(" to ")[1]
+
     @booking.update(booking_params)
     redirect_to dashboard_path
   end
@@ -45,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:rental_start_date, :rental_end_date)
+    params.require(:booking).permit(:rental_start_date)
   end
 end
